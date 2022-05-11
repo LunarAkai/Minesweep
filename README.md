@@ -1,4 +1,4 @@
-# Minesweeper
+# Minesweep
 #100DaysOfCode - Day 5
 
 Source of Icons: 
