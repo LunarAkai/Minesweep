@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BoardSize : MonoBehaviour
 {
-    
     public int[] boardSizes = 
     {
         8,
@@ -21,6 +20,4 @@ public class BoardSize : MonoBehaviour
         128,
         512
     };
-
-    
 }

@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
       [SerializeField] private int mineCount = 32;
       [SerializeField] private GameObject gameOverScreen;
       [SerializeField] private GameObject settingsMenu;
+      [SerializeField] private GameObject winScreen;
       [SerializeField] private TMP_Text timerText;
 
       private Board board;
@@ -92,7 +93,17 @@ public class Game : MonoBehaviour
             SetCameraSize();
             timer = 0f;
             state = new Cell[width, height];
-            gameOverScreen.SetActive(false);
+            
+            if (gameOverScreen.activeInHierarchy)
+            {
+                  gameOverScreen.SetActive(false);
+            }
+            
+            if (winScreen.activeInHierarchy)
+            {
+                  winScreen.SetActive(false);
+            }
+            
             gameover = false;
             
             GenerateCells();
@@ -218,10 +229,6 @@ public class Game : MonoBehaviour
             }
             
             
-            if (gameover)
-            {
-                  gameOverScreen.SetActive(true);
-            }
             
             if (Input.GetKeyDown(KeyCode.R) && gameover)
             {
@@ -315,8 +322,9 @@ public class Game : MonoBehaviour
 
       private void Explode(Cell cell)
       {
-            Debug.Log("Game Over");
+            //Debug.Log("Game Over");
             gameover = true;
+            gameOverScreen.SetActive(true);
 
             cell.revealed = true;
             cell.exploded = true;
@@ -350,7 +358,8 @@ public class Game : MonoBehaviour
                   }
             }
 
-            Debug.Log("You Win!");
+            winScreen.SetActive(true);
+            //Debug.Log("You Win!");
             gameover = true;
             
             for (int x = 0; x < width; x++)
